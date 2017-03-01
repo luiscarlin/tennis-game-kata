@@ -44,4 +44,12 @@ public class TennisGameTest {
         String state = underTest.getState();
         assertThat(state, is(WAITING_FOR_PLAYERS_STATE));
     }
+
+    @Test
+    public void aGameAcceptsTwoPlayersAndWaitsToStart() throws Exception {
+        underTest.addPlayer("Rita");
+        underTest.addPlayer("Carl");
+        String state = underTest.getState();
+        assertThat(state, is("Ready to start"));
+    }
 }
