@@ -18,7 +18,12 @@ public class TennisGame {
     }
 
     public void start() throws IllegalStateException {
-        throw new IllegalStateException("The game cannot start without two players");
+        if (state == "Ready to start") {
+            state  = "Game started";
+        }
+        else {
+            throw new IllegalStateException("The game cannot start without two players");
+        }
     }
 
     public void addPlayer(String playerName) {
