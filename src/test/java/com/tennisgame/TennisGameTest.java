@@ -58,4 +58,23 @@ public class TennisGameTest {
         String state = underTest.getState();
         assertThat(state, is(GAME_STARTED_STATE));
     }
+
+    @Test
+    public void aGameStartsWithScoreLoveLove() throws Exception {
+        underTest.addPlayer("Rita");
+        underTest.addPlayer("Carl");
+        underTest.start();
+        String score = underTest.getScore();
+        assertThat(score, is("love:love"));
+    }
+
+    @Test
+    public void fifteenShouldBeDescriptionForScore1() throws Exception {
+        underTest.addPlayer("Rita");
+        underTest.addPlayer("Carl");
+        underTest.start();
+        underTest.playerOneWinBall();
+        String score = underTest.getScore();
+        assertThat(score, is("fifteen:love"));
+    }
 }

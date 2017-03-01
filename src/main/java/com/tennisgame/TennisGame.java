@@ -7,6 +7,7 @@ public class TennisGame {
 
     private List<String> players;
     private String state;
+    private String score;
 
     TennisGame() {
         players = new ArrayList<String>();
@@ -20,6 +21,7 @@ public class TennisGame {
     public void start() throws IllegalStateException {
         if (state == "Ready to start") {
             state  = "Game started";
+            score = "love:love";
         }
         else {
             throw new IllegalStateException("The game cannot start without two players");
@@ -32,5 +34,13 @@ public class TennisGame {
         if(players.size() == 2) {
             state = "Ready to start";
         }
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void playerOneWinBall() {
+        score = "fifteen:love";
     }
 }
