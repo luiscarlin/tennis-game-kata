@@ -8,4 +8,7 @@ public class TennisGame {
     public void start() throws IllegalStateException {
         throw new IllegalStateException("The game cannot start without players");
     }
+
+    public void addPlayer(String playerName) {
+    }
 }
