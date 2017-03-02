@@ -150,4 +150,22 @@ public class TennisGameTest {
         String score = underTest.getScore();
         assertThat(score, is("deuce"));
     }
+
+    @Test
+    public void advantageShouldBeDescriptionWhenAtLeastBothPlayersHaveScoredThreePointsAndOneHasOneExtraPoint() throws Exception {
+        underTest.addPlayer("Rita");
+        underTest.addPlayer("Carl");
+        underTest.start();
+        underTest.playerOneWinBall();
+        underTest.playerOneWinBall();
+        underTest.playerOneWinBall();
+
+        underTest.playerTwoWinBall();
+        underTest.playerTwoWinBall();
+        underTest.playerTwoWinBall();
+        underTest.playerTwoWinBall();
+
+        String score = underTest.getScore();
+        assertThat(score, is("advantage player2"));
+    }
 }

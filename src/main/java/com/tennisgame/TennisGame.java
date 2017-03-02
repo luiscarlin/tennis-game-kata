@@ -63,24 +63,26 @@ public class TennisGame {
     }
 
     public void playerTwoWinBall() {
-        String playerOneScore = score.split(":")[0];
-        String playerTwoScore = score.split(":")[1];
-
-        if (playerTwoScore.equals("love")) {
-            playerTwoScore = "fifteen";
-        }
-        else if (playerTwoScore.equals("fifteen")) {
-            playerTwoScore = "thirty";
-        }
-        else if (playerTwoScore.equals("thirty")) {
-            playerTwoScore = "forty";
-        }
-
-        if (playerOneScore.equals(playerTwoScore)) {
-            score = "deuce";
+        if (score.equals("deuce")) {
+            score = "advantage player2";
         }
         else {
-            score = playerOneScore + ":" + playerTwoScore;
+            String playerOneScore = score.split(":")[0];
+            String playerTwoScore = score.split(":")[1];
+
+            if (playerTwoScore.equals("love")) {
+                playerTwoScore = "fifteen";
+            } else if (playerTwoScore.equals("fifteen")) {
+                playerTwoScore = "thirty";
+            } else if (playerTwoScore.equals("thirty")) {
+                playerTwoScore = "forty";
+            }
+
+            if (playerOneScore.equals(playerTwoScore)) {
+                score = "deuce";
+            } else {
+                score = playerOneScore + ":" + playerTwoScore;
+            }
         }
     }
 }
