@@ -50,6 +50,9 @@ public class TennisGame {
         else if (playerOneScore.equals("fifteen")) {
             playerOneScore = "thirty";
         }
+        else if (playerOneScore.equals("thirty")) {
+            playerOneScore = "forty";
+        }
 
         score = playerOneScore + ":" + playerTwoScore;
     }

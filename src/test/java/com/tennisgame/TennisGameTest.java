@@ -88,4 +88,16 @@ public class TennisGameTest {
         String score = underTest.getScore();
         assertThat(score, is("thirty:love"));
     }
+
+    @Test
+    public void fortyShouldBeDescriptionForScore3() throws Exception {
+        underTest.addPlayer("Rita");
+        underTest.addPlayer("Carl");
+        underTest.start();
+        underTest.playerOneWinBall();
+        underTest.playerOneWinBall();
+        underTest.playerOneWinBall();
+        String score = underTest.getScore();
+        assertThat(score, is("forty:love"));
+    }
 }
