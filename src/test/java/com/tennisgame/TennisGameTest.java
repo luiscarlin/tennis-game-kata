@@ -69,7 +69,7 @@ public class TennisGameTest {
     }
 
     @Test
-    public void fifteenShouldBeDescriptionForScore1() throws Exception {
+    public void fifteenShouldBeDescriptionWhenPlayer1Scores1() throws Exception {
         underTest.addPlayer("Rita");
         underTest.addPlayer("Carl");
         underTest.start();
@@ -79,7 +79,17 @@ public class TennisGameTest {
     }
 
     @Test
-    public void thirtyShouldBeDescriptionForScore2() throws Exception {
+    public void fifteenShouldBeDescriptionWhenPlayer2Scores1() throws Exception {
+        underTest.addPlayer("Rita");
+        underTest.addPlayer("Carl");
+        underTest.start();
+        underTest.playerTwoWinBall();
+        String score = underTest.getScore();
+        assertThat(score, is("love:fifteen"));
+    }
+
+    @Test
+    public void thirtyShouldBeDescriptionWhenPlayer1Scores2() throws Exception {
         underTest.addPlayer("Rita");
         underTest.addPlayer("Carl");
         underTest.start();
@@ -90,7 +100,18 @@ public class TennisGameTest {
     }
 
     @Test
-    public void fortyShouldBeDescriptionForScore3() throws Exception {
+    public void thirtyShouldBeDescriptionWhenPlayer2Scores2() throws Exception {
+        underTest.addPlayer("Rita");
+        underTest.addPlayer("Carl");
+        underTest.start();
+        underTest.playerTwoWinBall();
+        underTest.playerTwoWinBall();
+        String score = underTest.getScore();
+        assertThat(score, is("love:thirty"));
+    }
+
+    @Test
+    public void fortyShouldBeDescriptionWhenPlayer1Scores3() throws Exception {
         underTest.addPlayer("Rita");
         underTest.addPlayer("Carl");
         underTest.start();
@@ -99,6 +120,18 @@ public class TennisGameTest {
         underTest.playerOneWinBall();
         String score = underTest.getScore();
         assertThat(score, is("forty:love"));
+    }
+
+    @Test
+    public void fortyShouldBeDescriptionWhenPlayer2Scores3() throws Exception {
+        underTest.addPlayer("Rita");
+        underTest.addPlayer("Carl");
+        underTest.start();
+        underTest.playerTwoWinBall();
+        underTest.playerTwoWinBall();
+        underTest.playerTwoWinBall();
+        String score = underTest.getScore();
+        assertThat(score, is("love:forty"));
     }
 
     @Test
