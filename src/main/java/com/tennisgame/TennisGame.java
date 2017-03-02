@@ -51,15 +51,18 @@ public class TennisGame {
 
             if (playerOneScore.equals("love")) {
                 playerOneScore = "fifteen";
-            } else if (playerOneScore.equals("fifteen")) {
+            }
+            else if (playerOneScore.equals("fifteen")) {
                 playerOneScore = "thirty";
-            } else if (playerOneScore.equals("thirty")) {
+            }
+            else {
                 playerOneScore = "forty";
             }
 
-            if (playerOneScore.equals(playerTwoScore)) {
+            if (playerOneScore.equals("forty") && playerTwoScore.equals("forty")) {
                 score = "deuce";
-            } else {
+            }
+            else {
                 score = playerOneScore + ":" + playerTwoScore;
             }
         }
@@ -75,15 +78,18 @@ public class TennisGame {
 
             if (playerTwoScore.equals("love")) {
                 playerTwoScore = "fifteen";
-            } else if (playerTwoScore.equals("fifteen")) {
+            }
+            else if (playerTwoScore.equals("fifteen")) {
                 playerTwoScore = "thirty";
-            } else if (playerTwoScore.equals("thirty")) {
+            }
+            else {
                 playerTwoScore = "forty";
             }
 
-            if (playerOneScore.equals(playerTwoScore)) {
+            if (playerOneScore.equals("forty") && playerTwoScore.equals("forty")) {
                 score = "deuce";
-            } else {
+            }
+            else {
                 score = playerOneScore + ":" + playerTwoScore;
             }
         }
