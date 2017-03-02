@@ -41,6 +41,16 @@ public class TennisGame {
     }
 
     public void playerOneWinBall() {
-        score = "fifteen:love";
+        String playerOneScore = score.split(":")[0];
+        String playerTwoScore = score.split(":")[1];
+
+        if (playerOneScore.equals("love")) {
+            playerOneScore = "fifteen";
+        }
+        else if (playerOneScore.equals("fifteen")) {
+            playerOneScore = "thirty";
+        }
+
+        score = playerOneScore + ":" + playerTwoScore;
     }
 }
