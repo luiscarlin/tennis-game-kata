@@ -100,4 +100,21 @@ public class TennisGameTest {
         String score = underTest.getScore();
         assertThat(score, is("forty:love"));
     }
+
+    @Test
+    public void deuceShouldBeDescriptionWhenAtLeastBothPlayersHaveScoredThreePointsAndTheyHaveSameScore() throws Exception {
+        underTest.addPlayer("Rita");
+        underTest.addPlayer("Carl");
+        underTest.start();
+        underTest.playerOneWinBall();
+        underTest.playerOneWinBall();
+        underTest.playerOneWinBall();
+
+        underTest.playerTwoWinBall();
+        underTest.playerTwoWinBall();
+        underTest.playerTwoWinBall();
+
+        String score = underTest.getScore();
+        assertThat(score, is("deuce"));
+    }
 }
