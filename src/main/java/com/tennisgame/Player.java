@@ -19,4 +19,8 @@ public class Player {
     public TennisGame getGame() {
         return game;
     }
+
+    public int getCurrentScore() {
+        throw new IllegalStateException("Game has not started yet");
+    }
 }
