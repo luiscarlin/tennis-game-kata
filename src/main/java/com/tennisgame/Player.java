@@ -1,7 +1,8 @@
 package com.tennisgame;
 
 public class Player {
-    private String name;
+    private String
+            name;
     private TennisGame game;
 
     public void setName(String name) {
@@ -21,6 +22,10 @@ public class Player {
     }
 
     public int getCurrentScore() {
-        throw new IllegalStateException("Game has not started yet");
+        if (game == null) {
+            throw new IllegalStateException("You are not playing any games");
+        }
+
+        return 0;
     }
 }
