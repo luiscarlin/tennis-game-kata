@@ -22,13 +22,13 @@ public class PlayerTest {
     }
 
     @Test
-    public void PlayerKnowsTotalGamesLost() throws Exception {
+    public void PlayerKnowsTotalGamesLostAndCanIncrement() throws Exception {
         underTest.incrementNumGamesLost();
         assertThat(underTest.getNumGamesLost(), is(1));
     }
 
     @Test
-    public void PlayerKnowsTotalGamesWon() throws Exception {
+    public void PlayerKnowsTotalGamesWonAndCanIncrement() throws Exception {
         underTest.incrementNumGamesWon();
         assertThat(underTest.getNumGamesWon(), is(1));
     }
