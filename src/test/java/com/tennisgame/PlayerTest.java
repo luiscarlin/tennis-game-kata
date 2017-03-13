@@ -20,4 +20,10 @@ public class PlayerTest {
         underTest.setName("Rita");
         assertThat(underTest.getName(), is("Rita"));
     }
+
+    @Test
+    public void PlayerKnowsTotalGamesLost() throws Exception {
+        underTest.incrementNumGamesLost();
+        assertThat(underTest.getNumGamesLost(), is(1));
+    }
 }
