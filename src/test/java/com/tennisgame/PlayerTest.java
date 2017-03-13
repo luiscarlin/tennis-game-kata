@@ -26,4 +26,10 @@ public class PlayerTest {
         underTest.incrementNumGamesLost();
         assertThat(underTest.getNumGamesLost(), is(1));
     }
+
+    @Test
+    public void PlayerKnowsTotalGamesWon() throws Exception {
+        underTest.incrementNumGamesWon();
+        assertThat(underTest.getNumGamesWon(), is(1));
+    }
 }
