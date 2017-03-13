@@ -1,97 +1,57 @@
 package com.tennisgame;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TennisGame {
+    private enum State {
+        WAITING_FOR_PLAYERS ("Waiting for Players"),
+        READY_TO_START      ("Ready to Start"),
+        GAME_STARTED        ("Game Started");
 
-    private List<String> players;
-    private String state;
-    private String score;
+        private final String state;
+
+        State(String state) {
+            this.state = state;
+        }
+        public String getState() {
+            return state;
+        }
+    }
+
+    private List<String> descriptions = Arrays.asList("love", "fifteen", "thirty", "forty");
+    private Map<Player, Integer> players;
+    private State state;
 
     TennisGame() {
-        players = new ArrayList<String>();
-        state = "Waiting for players";
+        players = new HashMap<Player, Integer>();
+        state = State.WAITING_FOR_PLAYERS;
     }
 
     public String getState() {
-        return state;
+        return state.getState();
     }
 
     public void start() throws IllegalStateException {
-        if (state == "Ready to start") {
-            state  = "Game started";
-            score = "love:love";
+        if (state == State.READY_TO_START) {
+            state  = State.GAME_STARTED;
         }
         else {
             throw new IllegalStateException("The game cannot start without two players");
         }
     }
 
-    public void addPlayer(String playerName) {
-        players.add(playerName);
+    public void addPlayer(Player player) {
+        players.put(player, 0);
 
         if(players.size() == 2) {
-            state = "Ready to start";
+            state = State.READY_TO_START;
         }
     }
 
-    public String getScore() {
-        return score;
-    }
-
-    public void playerOneWinBall() {
-        if (score.equals("deuce")) {
-            score = "advantage " + players.get(0);
-        }
-        else {
-            String playerOneScore = score.split(":")[0];
-            String playerTwoScore = score.split(":")[1];
-
-
-            if (playerOneScore.equals("love")) {
-                playerOneScore = "fifteen";
-            }
-            else if (playerOneScore.equals("fifteen")) {
-                playerOneScore = "thirty";
-            }
-            else {
-                playerOneScore = "forty";
-            }
-
-            if (playerOneScore.equals("forty") && playerTwoScore.equals("forty")) {
-                score = "deuce";
-            }
-            else {
-                score = playerOneScore + ":" + playerTwoScore;
-            }
-        }
-    }
-
-    public void playerTwoWinBall() {
-        if (score.equals("deuce")) {
-            score = "advantage " + players.get(1);
-        }
-        else {
-            String playerOneScore = score.split(":")[0];
-            String playerTwoScore = score.split(":")[1];
-
-            if (playerTwoScore.equals("love")) {
-                playerTwoScore = "fifteen";
-            }
-            else if (playerTwoScore.equals("fifteen")) {
-                playerTwoScore = "thirty";
-            }
-            else {
-                playerTwoScore = "forty";
-            }
-
-            if (playerOneScore.equals("forty") && playerTwoScore.equals("forty")) {
-                score = "deuce";
-            }
-            else {
-                score = playerOneScore + ":" + playerTwoScore;
-            }
-        }
+    public Integer getScore(Player player) {
+        return players.get(player);
     }
 }

@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class PlayerTest {
 
@@ -31,5 +32,16 @@ public class PlayerTest {
     public void PlayerKnowsTotalGamesWonAndCanIncrement() throws Exception {
         underTest.incrementNumGamesWon();
         assertThat(underTest.getNumGamesWon(), is(1));
+    }
+
+    @Test
+    public void PlayersCanBeCompared() throws Exception {
+        underTest.setName("player1");
+
+        Player playerTwo = new Player();
+        playerTwo.setName("player2");
+
+        assertThat(underTest.equals(playerTwo), is(false));
+        assertTrue(underTest.hashCode() != playerTwo.hashCode());
     }
 }
