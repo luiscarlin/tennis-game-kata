@@ -113,6 +113,7 @@ public class TennisGameTest {
         startGame();
 
         for (int i = 0; i <= 3; i++) {
+            assertThat(underTest.getScore(playerOne), is(i));
             assertThat(underTest.getScoreDescription(playerOne), is(DESCRIPTIONS.get(i)));
             underTest.winBall(playerOne);
         }
