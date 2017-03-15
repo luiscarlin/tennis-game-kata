@@ -92,11 +92,25 @@ public class TennisGameTest {
         underTest.start();
         assertThat(underTest.getScoreDescription(playerOne), is("love"));
     }
-/*
+
+    @Test
+    public void playerCanWinBallAndIncreaseScore() throws Exception {
+        underTest.addPlayer(playerOne);
+        underTest.addPlayer(playerTwo);
+
+        underTest.start();
+
+        assertThat(underTest.getScore(playerOne), is(0));
+
+        underTest.winBall(playerOne);
+        assertThat(underTest.getScore(playerOne), is(1));
+    }
+
+    /*
     @Test
     public void fifteenShouldBeDescriptionWhenPlayer1Scores1() throws Exception {
-        underTest.addPlayer(new Player("Rita"));
-        underTest.addPlayer(new Player("Carl"));
+        underTest.addPlayer(playerOne);
+        underTest.addPlayer(playerTwo);
         underTest.start();
         underTest.playerOneWinBall();
         String score = underTest.getScore();

@@ -20,11 +20,13 @@ public class TennisGame {
         public String getState() {
             return state;
         }
+
     }
     private List<String> descriptions = Arrays.asList("love", "fifteen", "thirty", "forty");
-
     private Map<Player, Integer> players;
+
     private State state;
+
     TennisGame() {
         players = new HashMap<Player, Integer>();
         state = State.WAITING_FOR_PLAYERS;
@@ -57,5 +59,9 @@ public class TennisGame {
 
     public String getScoreDescription(Player player) {
         return "love";
+    }
+
+    public void winBall(Player player) {
+        players.put(player, 1);
     }
 }
