@@ -6,6 +6,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -18,6 +21,7 @@ public class TennisGameTest {
     private final String WAITING_FOR_PLAYERS_STATE = "Waiting for Players";
     private final String READY_TO_START_STATE = "Ready to Start";
     private final String GAME_STARTED_STATE = "Game Started";
+    private final List<String> DESCRIPTIONS = Arrays.asList("love", "fifteen", "thirty", "forty");
 
     @Before
     public void setUp() throws Exception {
@@ -25,6 +29,13 @@ public class TennisGameTest {
         MockitoAnnotations.initMocks(this);
         playerOne.setName("Rita");
         playerTwo.setName("Carl");
+    }
+
+    public void startGame() {
+        underTest.addPlayer(playerOne);
+        underTest.addPlayer(playerTwo);
+
+        underTest.start();
     }
 
     @Test
@@ -66,39 +77,23 @@ public class TennisGameTest {
 
     @Test
     public void aGameStartsWithTwoPlayers() throws Exception {
-        underTest.addPlayer(playerOne);
-        underTest.addPlayer(playerTwo);
+        startGame();
 
-        underTest.start();
         String state = underTest.getState();
         assertThat(state, is(GAME_STARTED_STATE));
     }
 
     @Test
     public void aGameStartsWithScoreZeroZero() throws Exception {
-        underTest.addPlayer(playerOne);
-        underTest.addPlayer(playerTwo);
+        startGame();
 
-        underTest.start();
         assertThat(underTest.getScore(playerOne), is(0));
         assertThat(underTest.getScore(playerTwo), is(0));
     }
 
     @Test
-    public void loveShouldBeDescriptionForScore0() throws Exception {
-        underTest.addPlayer(playerOne);
-        underTest.addPlayer(playerTwo);
-
-        underTest.start();
-        assertThat(underTest.getScoreDescription(playerOne), is("love"));
-    }
-
-    @Test
     public void playerCanWinBallAndIncreaseScore() throws Exception {
-        underTest.addPlayer(playerOne);
-        underTest.addPlayer(playerTwo);
-
-        underTest.start();
+        startGame();
 
         for (int i = 0; i <= 10; i++) {
             assertThat(underTest.getScore(playerOne), is(i));
@@ -106,6 +101,23 @@ public class TennisGameTest {
         }
     }
 
+    @Test
+    public void loveShouldBeDescriptionForScore0() throws Exception {
+        startGame();
+
+        assertThat(underTest.getScoreDescription(playerOne), is("love"));
+    }
+
+    @Test
+    public void scoresUpTo4ShouldHaveDescriptions() throws Exception {
+        startGame();
+
+        for (int i = 0; i <= 3; i++) {
+            assertThat(underTest.getScoreDescription(playerOne), is(DESCRIPTIONS.get(i)));
+            underTest.winBall(playerOne);
+        }
+    }
+    
     /*
     @Test
     public void fifteenShouldBeDescriptionWhenPlayer1Scores1() throws Exception {

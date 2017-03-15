@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class TennisGame {
+
     private enum State {
         WAITING_FOR_PLAYERS ("Waiting for Players"),
         READY_TO_START      ("Ready to Start"),
@@ -22,7 +23,7 @@ public class TennisGame {
         }
 
     }
-    private List<String> descriptions = Arrays.asList("love", "fifteen", "thirty", "forty");
+    private final List<String> DESCRIPTIONS = Arrays.asList("love", "fifteen", "thirty", "forty");
     private Map<Player, Integer> players;
 
     private State state;
@@ -58,7 +59,8 @@ public class TennisGame {
     }
 
     public String getScoreDescription(Player player) {
-        return "love";
+        int score = players.get(player);
+        return DESCRIPTIONS.get(score);
     }
 
     public void winBall(Player player) {
