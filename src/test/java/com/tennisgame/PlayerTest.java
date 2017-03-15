@@ -17,25 +17,25 @@ public class PlayerTest {
     }
 
     @Test
-    public void PlayerNameCanBeSet() throws Exception {
+    public void playerNameCanBeSet() throws Exception {
         underTest.setName("Rita");
         assertThat(underTest.getName(), is("Rita"));
     }
 
     @Test
-    public void PlayerKnowsTotalGamesLostAndCanIncrement() throws Exception {
+    public void playerKnowsTotalGamesLostAndCanIncrement() throws Exception {
         underTest.incrementNumGamesLost();
         assertThat(underTest.getNumGamesLost(), is(1));
     }
 
     @Test
-    public void PlayerKnowsTotalGamesWonAndCanIncrement() throws Exception {
+    public void playerKnowsTotalGamesWonAndCanIncrement() throws Exception {
         underTest.incrementNumGamesWon();
         assertThat(underTest.getNumGamesWon(), is(1));
     }
 
     @Test
-    public void PlayersCanBeCompared() throws Exception {
+    public void playersCanBeCompared() throws Exception {
         underTest.setName("player1");
 
         Player playerTwo = new Player();
