@@ -31,8 +31,7 @@ public class TennisGameTest {
 
     @Test(expected = IllegalStateException.class)
     public void aGameShouldNotStartWithOnePlayer() throws Exception {
-        Player newPlayer = new Player();
-        newPlayer.setName("Rita");
+        Player newPlayer = new Player("Rita");
 
         underTest.addPlayer(newPlayer);
         underTest.start();
@@ -40,8 +39,7 @@ public class TennisGameTest {
 
     @Test
     public void aGameAcceptsAPlayerAndWaitsForSecondPlayerToJoin() throws Exception {
-        Player newPlayer = new Player();
-        newPlayer.setName("Rita");
+        Player newPlayer = new Player("Rita");
 
         underTest.addPlayer(newPlayer);
         String state = underTest.getState();
@@ -50,11 +48,8 @@ public class TennisGameTest {
 
     @Test
     public void aGameAcceptsTwoPlayersAndWaitsToStart() throws Exception {
-        Player playerOne = new Player();
-        playerOne.setName("Rita");
-
-        Player playerTwo = new Player();
-        playerTwo.setName("Carl");
+        Player playerOne = new Player("Rita");
+        Player playerTwo = new Player("Carl");
 
         underTest.addPlayer(playerOne);
         underTest.addPlayer(playerTwo);
@@ -65,11 +60,8 @@ public class TennisGameTest {
 
     @Test
     public void aGameStartsWithTwoPlayers() throws Exception {
-        Player playerOne = new Player();
-        playerOne.setName("Rita");
-
-        Player playerTwo = new Player();
-        playerTwo.setName("Carl");
+        Player playerOne = new Player("Rita");
+        Player playerTwo = new Player("Carl");
 
         underTest.addPlayer(playerOne);
         underTest.addPlayer(playerTwo);
@@ -81,11 +73,8 @@ public class TennisGameTest {
 
     @Test
     public void aGameStartsWithScoreLoveLove() throws Exception {
-        Player playerOne = new Player();
-        playerOne.setName("Rita");
-
-        Player playerTwo = new Player();
-        playerTwo.setName("Carl");
+        Player playerOne = new Player("Rita");
+        Player playerTwo = new Player("Carl");
 
         underTest.addPlayer(playerOne);
         underTest.addPlayer(playerTwo);

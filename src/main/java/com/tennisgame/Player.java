@@ -5,6 +5,10 @@ public class Player {
     private int numGamesLost;
     private int numGamesWon;
 
+    Player(String name) {
+        this.name = name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

@@ -13,13 +13,20 @@ public class PlayerTest {
 
     @Before
     public void setUp() throws Exception {
-        underTest = new Player();
+        underTest = new Player("Carl");
     }
 
     @Test
     public void playerNameCanBeSet() throws Exception {
         underTest.setName("Rita");
         assertThat(underTest.getName(), is("Rita"));
+    }
+
+    @Test
+    public void playerNameCanBeSetInConstructor() throws Exception {
+        String name = "Rita";
+        Player player = new Player(name);
+        assertThat(player.getName(), is(name));
     }
 
     @Test
@@ -38,8 +45,7 @@ public class PlayerTest {
     public void playersCanBeCompared() throws Exception {
         underTest.setName("player1");
 
-        Player playerTwo = new Player();
-        playerTwo.setName("player2");
+        Player playerTwo = new Player("player2");
 
         assertThat(underTest.equals(playerTwo), is(false));
         assertTrue(underTest.hashCode() != playerTwo.hashCode());
