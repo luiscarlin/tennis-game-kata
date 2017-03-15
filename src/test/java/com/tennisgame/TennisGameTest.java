@@ -100,10 +100,10 @@ public class TennisGameTest {
 
         underTest.start();
 
-        assertThat(underTest.getScore(playerOne), is(0));
-
-        underTest.winBall(playerOne);
-        assertThat(underTest.getScore(playerOne), is(1));
+        for (int i = 0; i <= 10; i++) {
+            assertThat(underTest.getScore(playerOne), is(i));
+            underTest.winBall(playerOne);
+        }
     }
 
     /*

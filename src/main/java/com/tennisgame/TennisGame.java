@@ -62,6 +62,7 @@ public class TennisGame {
     }
 
     public void winBall(Player player) {
-        players.put(player, 1);
+        int score = players.get(player);
+        players.put(player, score + 1);
     }
 }
